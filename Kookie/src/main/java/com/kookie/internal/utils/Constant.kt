@@ -1,4 +1,4 @@
-package com.kookie.utils
+package com.kookie.internal.utils
 
 object Constant {
     const val READ_TIMEOUT_MS = 10000L
