@@ -1,8 +1,6 @@
-package com.kookie.network
+package com.kookie.internal
 
-import com.kookie.utils.Constant.BASE_URL
-import com.kookie.utils.Constant.CONNECT_TIMEOUT_MS
-import com.kookie.utils.Constant.READ_TIMEOUT_MS
+import com.kookie.internal.utils.Constant
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
@@ -16,8 +14,8 @@ internal class RetrofitInstance {
         okHttpClient: OkHttpClient =
             OkHttpClient
                 .Builder()
-                .connectTimeout(CONNECT_TIMEOUT_MS, TimeUnit.MILLISECONDS)
-                .readTimeout(READ_TIMEOUT_MS, TimeUnit.MILLISECONDS)
+                .connectTimeout(Constant.CONNECT_TIMEOUT_MS, TimeUnit.MILLISECONDS)
+                .readTimeout(Constant.READ_TIMEOUT_MS, TimeUnit.MILLISECONDS)
                 .build()
     ): DownloadService {
         if (downloadService == null) {
@@ -25,7 +23,7 @@ internal class RetrofitInstance {
                 if (downloadService == null) {
                     downloadService = Retrofit
                         .Builder()
-                        .baseUrl(BASE_URL)
+                        .baseUrl(Constant.BASE_URL)
                         .client(okHttpClient)
                         .build()
                         .create(DownloadService::class.java)
