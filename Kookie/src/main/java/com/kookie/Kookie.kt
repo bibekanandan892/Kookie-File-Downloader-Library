@@ -1,5 +1,6 @@
 package com.kookie
 
+import android.annotation.SuppressLint
 import android.content.Context
 import com.kookie.internal.network.Retrofit
 import com.kookie.internal.utils.DownloadLogger
@@ -64,11 +65,24 @@ class Kookie private constructor(
         }
     }
 
+
     companion object {
+        @SuppressLint("StaticFieldLeak")
+        /**
+         * The ApplicationContext is tied to the lifecycle of the entire app, not individual activities, so this avoids memory leaks.
+         */
+        @Volatile
+        private var instance: Kookie? = null
+
         fun create(context: Context, builder: Builder.() -> Unit): Kookie {
-            return Builder().apply(builder).build(context)
+            return instance ?: synchronized(this) {
+                instance ?: Builder().apply(builder).build(context.applicationContext).also {
+                    instance = it
+                }
+            }
         }
+
+        internal fun getInstance(): Kookie? = instance
     }
 
 }
-
