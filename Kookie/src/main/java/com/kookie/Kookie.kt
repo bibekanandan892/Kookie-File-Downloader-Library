@@ -81,7 +81,6 @@ class Kookie private constructor(
                 }
             }
         }
-
         internal fun getInstance(): Kookie? = instance
     }
 
