@@ -18,17 +18,17 @@ interface DownloadDao {
     suspend fun update(downloadEntity: DownloadEntity)
 
     @Query("SELECT * FROM downloads where id = :id")
-    suspend fun get(id : String) : DownloadEntity?
+    suspend fun get(id: String): DownloadEntity?
 
     @Query("DELETE FROM downloads where id = :id")
-    suspend fun remove(id : String)
+    suspend fun remove(id: String)
 
     @Query("DELETE FROM downloads")
     suspend fun deleteAll()
 
     @Query("SELECT * FROM downloads ORDER BY queueTime ASC")
-    suspend fun getAllDownloadFlow() : Flow<List<DownloadEntity>>
+    suspend fun getAllDownloadFlow(): Flow<List<DownloadEntity>>
 
     @Query("SELECT * FROM downloads ORDER BY queueTime ASC")
-    suspend fun getAllDownload() :List<DownloadEntity>
+    suspend fun getAllDownload(): List<DownloadEntity>
 }
