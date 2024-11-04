@@ -1,4 +1,4 @@
-package com.kookie.internal
+package com.kookie.internal.network
 
 import okhttp3.ResponseBody
 import retrofit2.Response

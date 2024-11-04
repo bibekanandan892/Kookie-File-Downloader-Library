@@ -1,5 +1,8 @@
 package com.kookie
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class DownloadFile(
     val downloadUrl: String,
     val savePath: String,

@@ -12,11 +12,13 @@ class DownloadTimeout private constructor(
     class Builder {
         private var _connectTimeOutInMs: Long = DEFAULT_VALUE_CONNECT_TIMEOUT_MS
         private var _readTimeOutInMs: Long = DEFAULT_VALUE_READ_TIMEOUT_MS
+
         var connectTimeOutInMs: Long
             get() = _connectTimeOutInMs
             set(value) {
                 _connectTimeOutInMs = value
             }
+
         var readTimeOutInMs: Long
             get() = _readTimeOutInMs
             set(value) {

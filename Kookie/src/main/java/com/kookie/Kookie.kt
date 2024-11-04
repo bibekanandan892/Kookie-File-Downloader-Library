@@ -1,6 +1,7 @@
 package com.kookie
 
 import android.content.Context
+import com.kookie.internal.network.Retrofit
 import com.kookie.internal.utils.DownloadLogger
 import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
@@ -8,11 +9,14 @@ import java.util.concurrent.TimeUnit
 
 class Kookie private constructor(
     private val context: Context,
-    private var downloadConfig: DownloadTimeout,
-    private var notificationConfig: NotificationConfig,
-    private var logger: Logger,
-    private var okHttpClient: OkHttpClient
+    private val downloadConfig: DownloadTimeout,
+    private val notificationConfig: NotificationConfig,
+    private val logger: Logger,
+    private val okHttpClient: OkHttpClient
 ) {
+    init {
+        Retrofit.getDownloadService(okHttpClient = okHttpClient)
+    }
 
     class Builder {
         private var _notificationConfig: NotificationConfig = NotificationConfig.Builder().build()

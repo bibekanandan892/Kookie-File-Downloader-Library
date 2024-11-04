@@ -1,10 +1,11 @@
 package com.kookie
 
+import com.kookie.internal.utils.NotificationConst
 import kotlinx.serialization.Serializable
 
 @Serializable
 class NotificationConfig private constructor(
-    val enabled: Boolean = NotificationConst.DEFAULT_VALUE_NOTIFICATION_ENABLED,
+    val enabled: Boolean = false,
     val channelName: String = NotificationConst.DEFAULT_VALUE_NOTIFICATION_CHANNEL_NAME,
     val channelDescription: String = NotificationConst.DEFAULT_VALUE_NOTIFICATION_CHANNEL_DESCRIPTION,
     val importance: Int = NotificationConst.DEFAULT_VALUE_NOTIFICATION_CHANNEL_IMPORTANCE,
@@ -14,7 +15,7 @@ class NotificationConfig private constructor(
     val smallIcon: Int
 ) {
     class Builder {
-        private var _enabled: Boolean = NotificationConst.DEFAULT_VALUE_NOTIFICATION_ENABLED
+        private var _enabled: Boolean = false
         private var _channelName: String = NotificationConst.DEFAULT_VALUE_NOTIFICATION_CHANNEL_NAME
         private var _channelDescription: String =
             NotificationConst.DEFAULT_VALUE_NOTIFICATION_CHANNEL_DESCRIPTION
