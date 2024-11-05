@@ -9,7 +9,7 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 
-internal class DownloadTask(
+internal class DownloadWork(
     private val fileUrl: String,
     private val destinationPath: String,
     private val destinationFileName: String,
