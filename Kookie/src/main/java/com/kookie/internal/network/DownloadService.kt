@@ -11,7 +11,7 @@ import retrofit2.http.Url
 internal interface DownloadService {
     @Streaming
     @GET
-    suspend fun getBytesFromUrl(
+    suspend fun downloadFromUrl(
         @Url url: String,
         @HeaderMap headers: Map<String, String>
     ): Response<ResponseBody>
